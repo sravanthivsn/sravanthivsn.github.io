@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sravanthi Vemuri — Data Engineer</title>
+<meta name="description" content="Sai Naga Sravanthi Vemuri — Data Engineer & Senior Database Consultant, Berlin.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0F1520;
+    --bg-raised: #151D2A;
+    --bg-raised-2: #1B2432;
+    --text: #E7EAEE;
+    --text-dim: #93A0B2;
+    --text-faint: #5D6A7D;
+    --accent: #E8A33D;
+    --accent-2: #4FA8A0;
+    --line: #26313F;
+    --max: 880px;
+    --sans: 'IBM Plex Sans', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ animation: none !important; transition: none !important; }
+  }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; }
+
+  .wrap{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- top bar ---------- */
+  header.top{
+    position: sticky;
+    top:0;
+    z-index: 20;
+    background: rgba(15,21,32,0.88);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .top-inner{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 16px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 16px;
+  }
+  .brand{
+    font-family: var(--mono);
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    text-decoration:none;
+  }
+  nav.top-nav{
+    display:flex;
+    gap: 22px;
+    font-size: 14px;
+  }
+  nav.top-nav a{
+    text-decoration:none;
+    color: var(--text-dim);
+    transition: color .15s ease;
+  }
+  nav.top-nav a:hover, nav.top-nav a:focus-visible{
+    color: var(--accent);
+  }
+
+  /* ---------- hero ---------- */
+  /* .hero{
+    padding: 76px 0 64px;
+    display:grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 40px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size: clamp(34px, 5vw, 50px);
+    line-height: 1.08;
+    margin: 0 0 10px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .hero .role{
+    font-family: var(--mono);
+    color: var(--accent);
+    font-size: 15px;
+    margin: 0 0 22px;
+  }
+  .hero p.pitch{
+    color: var(--text-dim);
+    font-size: 17px;
+    max-width: 52ch;
+    width: 100%;
+    margin: 0 0 26px;
+   } */
+.hero {
+    padding: 76px 0 64px;
+    display: block;
+}
+
+.hero h1 {
+    font-size: clamp(34px, 5vw, 50px);
+    line-height: 1.08;
+    margin: 0 0 10px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.hero .role {
+    font-family: var(--mono);
+    color: var(--accent);
+    font-size: 15px;
+    margin: 0 0 22px;
+}
+
+.hero p.pitch {
+    color: var(--text-dim);
+    font-size: 17px;
+    max-width: none;
+    width: 100%;
+    margin: 0 0 26px;
+}
+  .badges{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .badge{
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--text-dim);
+    border: 1px solid var(--line);
+    padding: 5px 10px;
+    border-radius: 3px;
+  }
+  .hero-actions{
+    display:flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    display:inline-block;
+    text-decoration:none;
+    font-size: 14.5px;
+    padding: 11px 18px;
+    border-radius: 3px;
+    font-weight: 500;
+  }
+  .btn.primary{
+    background: var(--accent);
+    color: #16110A;
+  }
+  .btn.ghost{
+    border: 1px solid var(--line);
+    color: var(--text);
+  }
+  .btn.primary:hover{ filter: brightness(1.08); }
+  .btn.ghost:hover{ border-color: var(--text-faint); }
+
+  /* pipeline hero graphic */
+  .hero-graphic{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .hero-graphic svg{ width: 100%; height: auto; max-width: 300px; }
+  .flow-dot{
+    animation: flow 4.5s linear infinite;
+  }
+  @keyframes flow{
+    0%{ offset-distance: 0%; opacity: 0; }
+    6%{ opacity: 1; }
+    94%{ opacity: 1; }
+    100%{ offset-distance: 100%; opacity: 0; }
+  }
+
+  /* ---------- sections ---------- */
+  section{
+    padding: 54px 0;
+    border-top: 1px solid var(--line);
+  }
+  .section-head{
+    display:flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    gap: 12px;
+  }
+  .section-head h2{
+    font-size: 22px;
+    margin:0;
+    font-weight: 600;
+  }
+  .section-head .tag{
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--text-faint);
+  }
+
+  /* ---------- experience (pipeline timeline) ---------- */
+  .timeline{
+    position: relative;
+    padding-left: 26px;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left: 5px;
+    top: 6px;
+    bottom: 6px;
+    width: 1px;
+    background: linear-gradient(var(--accent-2), var(--line) 85%);
+  }
+  .job{
+    position: relative;
+    padding-bottom: 40px;
+  }
+  .job:last-child{ padding-bottom: 0; }
+  .job::before{
+    content:"";
+    position:absolute;
+    left: -26px;
+    top: 6px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent-2);
+  }
+  .job-head{
+    display:flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px 16px;
+    margin-bottom: 4px;
+  }
+  .job-head h3{
+    margin:0;
+    font-size: 17.5px;
+    font-weight: 600;
+  }
+  .job-head .dates{
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--text-faint);
+    white-space: nowrap;
+  }
+  .job .company{
+    color: var(--accent);
+    font-size: 14px;
+    margin: 0 0 12px;
+  }
+  .job ul{
+    margin: 0 0 14px;
+    padding-left: 18px;
+    color: var(--text-dim);
+    font-size: 15px;
+  }
+  .job li{ margin-bottom: 6px; }
+  .stack-line{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 6px 8px;
+  }
+  .chip{
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--text-faint);
+    border: 1px solid var(--line);
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+
+  /* ---------- stack layers ---------- */
+  .layer{
+    display:grid;
+    grid-template-columns: 220px 1fr;
+    gap: 18px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+  .layer:last-child{ border-bottom: none; }
+  .layer .layer-name{
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .layer .layer-sub{
+    color: var(--text-faint);
+    font-size: 12.5px;
+    margin-top: 3px;
+  }
+  .layer .items{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 7px 8px;
+  }
+  .layer .items span{
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--text-dim);
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    padding: 4px 9px;
+    border-radius: 3px;
+  }
+
+  /* ---------- projects ---------- */
+  .projects{
+    display:grid;
+    gap: 18px;
+  }
+  .project{
+    border: 1px solid var(--line);
+    border-left: 2px solid var(--accent-2);
+    background: var(--bg-raised);
+    padding: 20px 22px;
+    border-radius: 2px;
+  }
+  .project:nth-child(2){ border-left-color: var(--accent); }
+  .project:nth-child(3){ border-left-color: var(--text-faint); }
+  .project h3{
+    margin: 0 0 8px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .project p{
+    margin:0;
+    color: var(--text-dim);
+    font-size: 14.5px;
+  }
+
+  /* ---------- education / certs ---------- */
+  .two-col{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  h3.sub-head{
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--text-faint);
+    margin: 0 0 16px;
+    font-weight: 400;
+  }
+  .edu-item{ margin-bottom: 20px; }
+  .edu-item h4{
+    margin: 0 0 3px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .edu-item .meta{
+    font-size: 13px;
+    color: var(--text-faint);
+    font-family: var(--mono);
+    margin-bottom: 3px;
+  }
+  .edu-item .detail{
+    font-size: 14px;
+    color: var(--text-dim);
+  }
+  .cert-list{ list-style:none; margin:0; padding:0; }
+  .cert-list li{
+    display:flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+  }
+  .cert-list li:last-child{ border-bottom: none; }
+  .cert-list .yr{
+    font-family: var(--mono);
+    color: var(--text-faint);
+    white-space: nowrap;
+  }
+
+  /* ---------- awards ---------- */
+  .awards{ display:grid; gap: 16px; }
+  .award{
+    display:grid;
+    grid-template-columns: 130px 1fr;
+    gap: 16px;
+  }
+  .award .yr{
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+  }
+  .award p{ margin:0; font-size: 14.5px; color: var(--text-dim); }
+  .award strong{ color: var(--text); }
+
+  /* ---------- footer ---------- */
+  footer{
+    padding: 48px 0 60px;
+    border-top: 1px solid var(--line);
+  }
+  footer .foot-inner{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  footer h2{
+    font-size: 22px;
+    margin: 0 0 10px;
+    font-weight: 600;
+  }
+  footer p.small{
+    color: var(--text-dim);
+    font-size: 14.5px;
+    max-width: 40ch;
+    margin: 0 0 18px;
+  }
+  .contact-list{
+    list-style:none;
+    padding:0; margin:0;
+    font-family: var(--mono);
+    font-size: 14px;
+  }
+  .contact-list li{ margin-bottom: 8px; }
+  .contact-list a{ text-decoration:none; color: var(--text-dim); }
+  .contact-list a:hover{ color: var(--accent); }
+  .languages{
+    display:flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+  }
+  .languages .lang-row{
+    display:flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 220px;
+    color: var(--text-dim);
+  }
+  .languages .lang-row b{ color: var(--text); font-weight: 500; }
+  .copyright{
+    margin-top: 40px;
+    font-size: 12.5px;
+    color: var(--text-faint);
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 720px){
+    .hero{ grid-template-columns: 1fr; padding-top: 48px; }
+    .hero-graphic{ order: -1; max-width: 220px; margin: 0 auto 12px; }
+    nav.top-nav{ display:none; }
+    .two-col{ grid-template-columns: 1fr; gap: 32px; }
+    .layer{ grid-template-columns: 1fr; gap: 8px; }
+    .award{ grid-template-columns: 90px 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="#top">sravanthi.vemuri</a>
+    <nav class="top-nav">
+      <a href="#experience">Experience</a>
+      <a href="#stack">Stack</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div id="top" class="wrap">
+  <section class="hero" style="border-top:none;">
+    <div>
+      <h3>Sai Naga Sravanthi&nbsp;Vemuri</h3>
+      <p class="role">Data Engineer &amp; Senior Database Consultant</p>
+      <p class="pitch">Data Engineer & Senior Database Consultant with 6+ years of enterprise experience designing, automating, and scaling missioncritical data platforms across international organizations. Proven track record leading cross-functional Agile engineering teams to deliver high-availability cloud migrations, real-time streaming architectures, and secure data integration pipelines. Combines deep expertise in traditional database systems with modern cloud lakehouse ecosystems (Azure Databricks, AWS, Delta Lake, PySpark, Unity Catalog). Holds a Master’s degree in Data Science and is actively expanding into modern orchestration, transformation, and data governance practices (Apache Airflow, dbt, access control and lifecycle management) to complement a strong lakehouse and streaming foundation.</p>
+      <div class="badges">
+        <span class="badge">Berlin, Germany</span>
+        <span class="badge">Work permit — Germany</span>
+        <span class="badge">6+ years experience</span>
+      </div>
+      <!-- <div class="hero-actions">
+        <a class="btn primary" href="#contact">Get in touch</a>
+        <a class="btn ghost" href="#experience">See experience</a>
+      </div>
+    </div>
+    <div class="hero-graphic">
+      <svg viewBox="0 0 220 260" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <path id="flowpath" d="M40 30 L40 100 L110 130 L110 200 L180 230" />
+        </defs>
+        <line x1="40" y1="30" x2="40" y2="100" stroke="#26313F" stroke-width="1.5"/>
+        <line x1="40" y1="100" x2="110" y2="130" stroke="#26313F" stroke-width="1.5"/>
+        <line x1="110" y1="130" x2="110" y2="200" stroke="#26313F" stroke-width="1.5"/>
+        <line x1="110" y1="200" x2="180" y2="230" stroke="#26313F" stroke-width="1.5"/>
+
+        <circle cx="40" cy="30" r="7" fill="#0F1520" stroke="#4FA8A0" stroke-width="2"/>
+        <circle cx="40" cy="100" r="5" fill="#0F1520" stroke="#5D6A7D" stroke-width="1.5"/>
+        <circle cx="110" cy="130" r="7" fill="#0F1520" stroke="#E8A33D" stroke-width="2"/>
+        <circle cx="110" cy="200" r="5" fill="#0F1520" stroke="#5D6A7D" stroke-width="1.5"/>
+        <circle cx="180" cy="230" r="7" fill="#0F1520" stroke="#4FA8A0" stroke-width="2"/>
+
+        <text x="55" y="34" font-family="IBM Plex Mono" font-size="10" fill="#93A0B2">source</text>
+        <text x="125" y="134" font-family="IBM Plex Mono" font-size="10" fill="#93A0B2">transform</text>
+        <text x="120" y="248" font-family="IBM Plex Mono" font-size="10" fill="#93A0B2">warehouse</text>
+
+        <circle r="3.5" fill="#E8A33D" class="flow-dot" style="offset-path:path('M40 30 L40 100 L110 130 L110 200 L180 230');"/>
+      </svg>
+    </div> -->
+  </section>
+</div>
+
+<div class="wrap">
+  <section id="experience">
+    <div class="section-head">
+      <h2>Experience</h2>
+      <span class="tag">2019 — 2025</span>
+    </div>
+    <div class="timeline">
+
+      <div class="job">
+        <div class="job-head">
+          <h3>Senior Database Consultant &amp; Team Lead</h3>
+          <span class="dates">Jul 2023 – Dec 2025</span>
+        </div>
+        <p class="company">Verizon Communications, Hyderabad</p>
+        <ul>
+          <li>Led a cross-functional Agile team of 4 engineers on core Network Systems cloud database initiatives, with 100% on-time delivery and zero critical deployment errors.</li>
+          <li>Ran a zero-downtime migration of legacy databases for 50,000+ active customers, engineering a bidirectional sync layer to keep data consistent through the transition.</li>
+          <li>Tuned Oracle PL/SQL queries, indexing, and partitioning strategies, cutting response times 10x across core enterprise modules.</li>
+          <li>Built Kafka event-driven streaming workflows, feeding real-time telemetry into downstream analytics for faster executive decisions.</li>
+        </ul>
+        <div class="stack-line">
+          <span class="chip">Oracle 19c / RAC</span>
+          <span class="chip">PL/SQL</span>
+          <span class="chip">AWS S3 / EC2</span>
+          <span class="chip">Kafka</span>
+          <span class="chip">CI/CD</span>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <h3>Senior Integration Developer &amp; Data Engineer</h3>
+          <span class="dates">Apr 2022 – Jun 2023</span>
+        </div>
+        <p class="company">ADP, Hyderabad</p>
+        <ul>
+          <li>Built Dell Boomi pipelines pulling from Salesforce, Pendo, JazzHR and ADP's own REST APIs into a unified AWS Databricks Delta Lake platform.</li>
+          <li>Rewrote transformations in PySpark and Spark SQL with window functions and UDFs, improving query efficiency by 70%.</li>
+          <li>Automated Databricks cluster lifecycle and job orchestration, cutting manual operational overhead by 40% with zero-downtime deploys.</li>
+          <li>Mentored junior developers and streamlined dev/stage/prod workflows, speeding up sprint releases by 25%.</li>
+        </ul>
+        <div class="stack-line">
+          <span class="chip">Databricks</span>
+          <span class="chip">Delta Lake</span>
+          <span class="chip">PySpark</span>
+          <span class="chip">Dell Boomi</span>
+          <span class="chip">AWS</span>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <h3>Oracle Database Developer</h3>
+          <span class="dates">Sep 2019 – Mar 2022</span>
+        </div>
+        <p class="company">ADP, Hyderabad</p>
+        <ul>
+          <li>Built a PL/SQL auto-synchronization framework with FastAPI and Docker/Kubernetes, cutting manual migration effort by 65%.</li>
+          <li>Designed Oracle APEX monitoring dashboards tracking real-time metrics for 300k+ live enterprise clients.</li>
+          <li>Automated zero-downtime schema deployments, accelerating bi-weekly release cycles by 75%.</li>
+          <li>Ran multi-terabyte migrations across Oracle 11g/19c, Exadata and RAC at 99.99% availability.</li>
+        </ul>
+        <div class="stack-line">
+          <span class="chip">Oracle 11g/19c</span>
+          <span class="chip">FastAPI</span>
+          <span class="chip">Docker / K8s</span>
+          <span class="chip">Jenkins</span>
+          <span class="chip">GoldenGate</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="section-head">
+      <h2>Stack</h2>
+      <span class="tag">by layer</span>
+    </div>
+
+    <div class="layer">
+      <div><div class="layer-name">Cloud &amp; lakehouse</div><div class="layer-sub">where the data lives</div></div>
+      <div class="items">
+        <span>Azure Databricks</span><span>Delta Lake</span><span>Unity Catalog</span><span>ADLS Gen2</span><span>AWS S3</span><span>AWS Glue / Athena</span><span>Redshift</span><span>OCI</span>
+      </div>
+    </div>
+
+    <div class="layer">
+      <div><div class="layer-name">Databases</div><div class="layer-sub">systems of record</div></div>
+      <div class="items">
+        <span>Oracle (RAC, Exadata)</span><span>PL/SQL</span><span>GoldenGate</span><span>PostgreSQL</span><span>MySQL</span><span>MongoDB</span><span>Cassandra</span>
+      </div>
+    </div>
+
+    <div class="layer">
+      <div><div class="layer-name">Orchestration &amp; transformation</div><div class="layer-sub">moving and shaping data</div></div>
+      <div class="items">
+        <span>PySpark</span><span>Spark SQL</span><span>Apache Airflow</span><span>dbt</span><span>Dell Boomi</span><span>ETL / ELT</span><span>REST APIs</span><span>FastAPI</span>
+      </div>
+    </div>
+
+    <div class="layer">
+      <div><div class="layer-name">Programming</div><div class="layer-sub">the day-to-day tools</div></div>
+      <div class="items">
+        <span>Python</span><span>Pandas / NumPy</span><span>SQLAlchemy</span><span>SQL</span><span>Bash</span><span>Groovy (basic)</span>
+      </div>
+    </div>
+
+    <div class="layer">
+      <div><div class="layer-name">DevOps &amp; CI/CD</div><div class="layer-sub">shipping it safely</div></div>
+      <div class="items">
+        <span>Docker</span><span>Kubernetes</span><span>Jenkins</span><span>Git / Bitbucket</span><span>Terraform (basic)</span><span>Splunk</span>
+      </div>
+    </div>
+
+    <div class="layer">
+      <div><div class="layer-name">Analytics</div><div class="layer-sub">making sense of it</div></div>
+      <div class="items">
+        <span>scikit-learn</span><span>Predictive analytics</span><span>Power BI</span><span>Tableau</span><span>matplotlib / seaborn</span>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="projects">
+    <div class="section-head">
+      <h2>Featured projects</h2>
+      <span class="tag">selected</span>
+    </div>
+    <div class="projects">
+      <div class="project">
+        <h3>End-to-end Azure Databricks lakehouse pipeline</h3>
+        <p>Automated medallion architecture (Bronze / Silver / Gold) with PySpark, Delta Lake and Unity Catalog, orchestrated through Apache Airflow DAGs with dbt-managed transformations and automated testing for enterprise-scale analytics.</p>
+      </div>
+      <div class="project">
+        <h3>Predictive analytics &amp; customer segmentation</h3>
+        <p>Applied scikit-learn models and statistical time-series forecasting to evaluate customer churn trends, with interactive dashboards deployed in Tableau.</p>
+      </div>
+      <div class="project">
+        <h3>ETL workflow &amp; process automation</h3>
+        <p>Modular Python and SQL scripts to streamline complex data transformations and automate pipeline orchestration end to end.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-head">
+      <h2>Education &amp; certifications</h2>
+      <span class="tag">background</span>
+    </div>
+    <div class="two-col">
+      <div>
+        <h3 class="sub-head">education</h3>
+        <div class="edu-item">
+          <h4>Master of Data Science (Global)</h4>
+          <div class="meta">Deakin University, via Great Learning · Dec 2023 – Jul 2026</div>
+          <div class="detail">Grade: A (Distinction). Statistics, predictive modeling, ML, time-series forecasting, data wrangling, engineering AI solutions.</div>
+        </div>
+        <div class="edu-item">
+          <h4>B.Tech, Computer Science &amp; Engineering</h4>
+          <div class="meta">JNTU Kakinada · Aug 2015 – May 2019</div>
+          <div class="detail">Grade: 8.69 / 10.0. Data structures, RDBMS, computer networks, compiler design.</div>
+        </div>
+      </div>
+      <div>
+        <h3 class="sub-head">certifications</h3>
+        <ul class="cert-list">
+          <li><span>Azure Data Fundamentals — Microsoft</span><span class="yr">2026</span></li>
+          <li><span>Certified SAFe 6 Practitioner</span><span class="yr">2023</span></li>
+          <li><span>OCI Multicloud Architect Associate — Oracle</span><span class="yr">2023</span></li>
+          <li><span>Boomi Professional Developer</span><span class="yr">2022</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="awards">
+    <div class="section-head">
+      <h2>Awards</h2>
+      <span class="tag">recognition</span>
+    </div>
+    <div class="awards">
+      <div class="award">
+        <span class="yr">2024 – 2025</span>
+        <p><strong>Star Performer &amp; Tech Savvy Awards</strong>, Verizon — for cloud migration delivery, query optimization and cross-functional leadership.</p>
+      </div>
+      <div class="award">
+        <span class="yr">2023</span>
+        <p><strong>Rockstar Technical Award</strong>, ADP — for architecting a high-throughput integration pipeline moving Salesforce data into AWS Delta Lake via Boomi.</p>
+      </div>
+      <div class="award">
+        <span class="yr">2022</span>
+        <p><strong>Service Excellence Award</strong>, ADP — for three years of sustained operational excellence and key project delivery.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>
+        <h2>Let's talk</h2>
+        <p class="small">Open to Data Engineer roles across Germany — happy to talk about lakehouse builds, migrations, or where dbt and Airflow fit into a pipeline.</p>
+        <ul class="contact-list">
+          <li><a href="mailto:vsn.sravanthi@gmail.com">vsn.sravanthi@gmail.com</a></li>
+          <!-- <li><a href="tel:+491743842872">+49 174 3842872</a></li> -->
+          <li><a href="https://linkedin.com/in/sravanthivsn" target="_blank" rel="noopener">linkedin.com/in/sravanthivsn</a></li>
+        </ul>
+      </div>
+      <div class="languages">
+        <div class="lang-row"><b>German</b><span>A2, learning</span></div>
+        <div class="lang-row"><b>English</b><span>Fluent</span></div>
+        <div class="lang-row"><b>Hindi</b><span>Professional</span></div>
+        <div class="lang-row"><b>Telugu</b><span>Native</span></div>
+      </div>
+    </div>
+    <p class="copyright">© 2026 Sai Naga Sravanthi Vemuri · Berlin, Germany</p>
+  </div>
+</footer>
+
+</body>
+</html>
